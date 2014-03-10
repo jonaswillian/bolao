@@ -113,7 +113,7 @@
 			</p>
 			
 			<p>
-			<g:link controller="passwordRecovery">
+			<g:link controller="recuperarSenha">
 			Esqueceu Senha?
 			</g:link>
 			</p>
