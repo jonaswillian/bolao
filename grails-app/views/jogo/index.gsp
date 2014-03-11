@@ -24,9 +24,7 @@
 					
 					<input type="hidden" value="${jogo.id}" name="idJogo"/>
 					<input type="submit" value="Salvar Palpite" />
-					<g:if test='${flash.message}'>
-						<div id="msg${jogo.id}">${flash.message}</div>
-					</g:if>
+					<div id="msg${jogo.id}"></div>					
 				</div>
 				
 				</g:formRemote>

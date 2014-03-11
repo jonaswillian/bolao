@@ -15,6 +15,7 @@ import restrito.Usuario
 class RecuperarSenhaController {
 
 	def springSecurityService
+	String msg=""
 	
 	def index() { }
 	
@@ -36,16 +37,16 @@ class RecuperarSenhaController {
 			usuario.password = novaSenha
 			
 			if(!usuario.hasErrors() && usuario.save(flush:true,  failOnError: true)){
-				println "Nova senha enviada no e-mail: "+ email
-				flash.message = "Nova senha enviada no e-mail: "+ email
+				//println "Nova senha enviada no e-mail: "+ email
+				msg = "Nova senha enviada no e-mail: "+ email
 			}
 		}else
 		{
-			println "Erro: Email de usuário não encontrado!"
-			flash.error="Erro: Email de usuário não encontrado!"
+			//println "Erro: Email de usuário não encontrado!"
+			msg="Erro: Email não encontrado!"
 		}
 		
-		render(view:'/recuperarSenha/index')
+		render msg
 	}
 
 	
@@ -84,8 +85,8 @@ class RecuperarSenhaController {
 			  Transport.send(message);
 
 		 } catch (MessagingException e) {
-			  println "Erro no envio do email. Tente mais tarde!"
+			  msg= "Erro no envio do email. Tente mais tarde!"
 	  }
   }
-
+	
 }

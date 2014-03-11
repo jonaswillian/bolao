@@ -94,34 +94,23 @@
 					url="[controller:'recuperarSenha', action:'enviar']"
 					update="status">
 					<p>
-						<label>Email:</label> <input type='text' class='text_' name="email"
-							style="width: 90%" required="required" />
+						<label>Email:</label> <input type='text' class='text_'
+							name="email" style="width: 90%" required="required" />
 					</p>
 
 					<p>
 						<input type='submit' name="Enviar" value='Enviar' class="bot" />
 					</p>
 					<br />
-					<br />
+
+					<div id="status" style="font-size: 14px; font-weight: bold; align: center;">
+						
+					</div>
+
 				</g:formRemote>
-			</div>
-			<div>
-				<g:if test="${flash.error}">
-					<div id="status">
-						${flash.error}
-					</div>
-				</g:if>
-
-				<g:if test="${flash.message}">
-					<div id="status">
-						${flash.message}
-					</div>
-				</g:if>
-
 			</div>
 
 		</div>
-	</div>
 	</div>
 </body>
 </html>

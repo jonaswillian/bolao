@@ -26,7 +26,7 @@ class JogoController {
 	}
 
 	def salvarPalpite() {
-
+		String msg=""
 		Jogo jogo = Jogo?.get(params?.idJogo)
 		Usuario usuario =Usuario.findByUsername(springSecurityService?.principal?.username)
 
@@ -57,10 +57,10 @@ class JogoController {
 		palpite.usuario = usuario
 
 		if (!palpite.hasErrors() && palpite.save(flush:true,  failOnError: true)) {
-			flash.message="Palpite cadastrado com sucesso!"
+			msg="Palpite cadastrado com sucesso!"
 		}else {
-			flash.message=""
+			msg=""
 		}
-		render(view:'/jogo/index')
+		render msg
 	}
 }
