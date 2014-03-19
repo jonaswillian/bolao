@@ -121,8 +121,7 @@ grails.plugins.springsecurity.providerNames = ['autenticacao']
 grails.plugins.springsecurity.securityConfigType = SecurityConfigType.InterceptUrlMap
 grails.plugins.springsecurity.interceptUrlMap = [
 	'/index.gsp':         ['IS_AUTHENTICATED_ANONYMOUSLY'],
-	'/administrador.gsp': ['ROLE_ADMIN'],
-	'/jogo/index': ['ROLE_USER','ROLE_ADMIN']
-   
+	'/jogo/index': ['ROLE_USER','ROLE_ADMIN'],
+	'/admin/index': ['ROLE_ADMIN']   
 ]
 

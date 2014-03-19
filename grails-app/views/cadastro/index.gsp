@@ -6,6 +6,24 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" ></script>
 <!-- Inclusão do Jquery Validate -->
 <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.validate/1.6/jquery.validate.js" ></script>	
+
+<script type="text/javascript">
+        $(document).ready(function(){
+        $('#frmUsuario').validate({
+            rules:{               
+                senhaConfirmada:{
+                   equalTo: "#senha"
+                    },                
+                  },
+                 messages:{                
+                   senhaConfirmada:{
+                	  required: "Os campos de senha devem ser iguais.",
+                      equalTo: "As senhas não conferem!"
+                             },                
+                          }             
+                     });
+                  });
+	    </script>
 </head>
 	
 <body>
@@ -16,7 +34,7 @@
 			Preencha os dados abaixo e cadastre-se!
 		</p>		
 				
-		<g:formRemote name="frmUsuario" url="[controller:'cadastro', action:'salvar']" update="status">
+		<g:formRemote name="frmUsuario" url="[controller:'cadastro', action:'salvar']" update="msg" before="if (jQuery('#frmUsuario').valid()) {" after="}">
 		<p>
 			<strong>SEU NOME:</strong><br >
 			<input type="text" name="nome" class="campo1" style="width:700px; height:30px;" required autofocus /><br />	
@@ -33,26 +51,20 @@
 		
 		<p>
 			<strong>SENHA:</strong><br >
-			<input type="password" name="senha" class="campo1" style="width:400px; height:30px;" required /><br />
+			<input type="password" name="senha" id="senha" class="campo1" style="width:400px; height:30px;" required /><br />
 		</p>
 		
 		<p>
 			<strong>CONFIRME SUA SENHA:</strong><br >
-			<input type="password" name="senhaConfirmada" class="campo1" style="width:400px; height:30px;" required /><br />
+			<input type="password" name="senhaConfirmada" id="senhaConfirmada" class="campo1" style="width:400px; height:30px;" required /><br />
 		</p>
 		
 		<input type="submit" value="Cadastrar" name="Cadastrar" class="bot" /><br /><br />
+		
+		<div id="msg"></div>
 		</g:formRemote>
-		<br/>
-		
-		<g:if test="${flash.error}">
-			<div id="status">${flash.error}</div>
-		</g:if>
-	
-		<g:if test="${flash.message}">
-			<div id="status">${flash.message}</div>
-		</g:if>				
-		
+		<br/>			
+			
 	</div>
 			
 		<div class="clear"></div>

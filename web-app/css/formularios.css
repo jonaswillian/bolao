@@ -1,3 +1,44 @@
+/* Radio */
+
+input.aceitar[type="radio"] {
+    background-color: #fff;
+	border: 1px solid #c4c4c4;
+    border-radius: 10px;
+    cursor: pointer;
+    height: 22px;
+    margin-right: 12px;
+    position: relative;
+    width: 22px;
+    -webkit-appearance: none;
+	float: left;
+	margin-top: -2px;
+}
+
+input[type="radio"]:hover {
+	border: 1px solid #38ab31;
+}
+
+input[type="radio"]:after {
+    background-color: #38ab31;
+    border-radius: 10px;
+    content: '';
+    display: none;
+    height: 22px;
+    position: relative;
+    width: 22px;
+	
+}
+input[type="radio"]:checked:after {
+    background: url(../images/radio_checked.png);
+    cursor: pointer;
+    display: inline-block;
+    height: 22px;
+    position: relative;
+    width: 22px;
+	margin-left: -11px;
+	margin-top: -11px;
+    -webkit-appearance: none;
+}
 input.campo1{
 	padding: 6px;
 	font-family: Verdana, Arial, Helvetica, sans-serif;

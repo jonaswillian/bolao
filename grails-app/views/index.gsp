@@ -28,12 +28,27 @@
 				Não h&aacute; jogos hoje!
 			</g:else>
 		</div>
-
+		
 		<div id="box">
 			<p class="tituloBox"
-				style="color: #006313; border-bottom: 2px solid #006313;">MAIORES
-				ACERTADORES</p>
-									</div>
+				style="color: #006313; border-bottom: 2px solid #006313;">MAIORES ACERTADORES
+			</p>			
+			<g:if test="${jogadores.size()>0 }">
+			<% def icont=0 %>
+				<g:each in="${jogadores}" var="jogador">
+					<% if(icont<4){ %>
+					<div style="padding: 6px; width: 90%; background: #f1f1f1; margin-bottom: 4px;">
+						${jogador.nome} &nbsp;............................................ &nbsp;${jogador.pontos} 
+						<br />
+					</div>
+					<% } %>
+					<%  icont=icont+1 %>
+				</g:each>
+			</g:if>
+			<g:else>
+				Não h&aacute; jogadores!
+			</g:else>
+		</div>
 
 		<div class="clear"></div>
 

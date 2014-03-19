@@ -1,5 +1,11 @@
 /* CSS Document */
 
+#msg{
+	background-color:#f1f1f1;
+	color:#ff0000;
+	font-weight:bold;	
+}
+
 html, body {
 	height:100%;
 }
@@ -28,7 +34,7 @@ body {
 }
 	
 #conteudo {
-	padding-bottom: 310px; /* espaço deve conter o tamanho do rodapé + folga */ 
+	padding-bottom: 310px; /* espaï¿½o deve conter o tamanho do rodapï¿½ + folga */ 
 }
 
 #areaMenu{

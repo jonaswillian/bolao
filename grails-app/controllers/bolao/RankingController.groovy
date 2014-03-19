@@ -7,6 +7,7 @@ class RankingController {
 	
 	def atualizar() {
 		//def lista = Pessoa.list(sort: 'pontos', order: 'desc')		
-		//render(view:'/index', model:[rankings:lista])
+		def lista = Pessoa.list()
+		render(view:'/index', model:[jogadores:lista])
 	}
 }

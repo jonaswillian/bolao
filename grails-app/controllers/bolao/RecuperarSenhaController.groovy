@@ -64,7 +64,7 @@ class RecuperarSenhaController {
 						 protected PasswordAuthentication getPasswordAuthentication()
 						 {
 							 //aqui precisa ser adicionado o usuario e senha
-							 return new PasswordAuthentication("joselazarosiqueira@gmail.com", "");
+							 return new PasswordAuthentication("bitbolao@gmail.com", "quest@1806");
 						 }
 					});
 
@@ -74,7 +74,7 @@ class RecuperarSenhaController {
 		try {
 
 			  Message message = new MimeMessage(session);
-			  message.setFrom(new InternetAddress("joselazarosiqueira@gmail.com")); //Remetente
+			  message.setFrom(new InternetAddress("bitbolao@gmail.com")); //Remetente
 
 			  Address[] toUser = InternetAddress.parse(txtemail);  //Destinatário(s)
 

@@ -1,28 +1,52 @@
 package bolao
 
+import org.hibernate.criterion.RowCountProjection;
+import org.hibernate.validator.cfg.defs.MaxDef;
+
 import bolao.Palpite;
 import restrito.Usuario
+import bolao.Pessoa;
 
 class JogoController {
 	def springSecurityService
 
 	def index() {
+		def dataAtual = new Date().format("yyyy-MM-dd")
+		def statusJogo
 		def listaDatas = [] as Set
+		def mapa = [:]
+
 		listaDatas = Jogo.list().data.unique()
 
-		def mapa = [:]
+
 		listaDatas.each {data ->
-			mapa[data] = Jogo.findAllByData(data)
+			def jogos = Jogo.findAllByData(data)
+
+			if(data.format("yyyy-MM-dd") <= dataAtual)
+				statusJogo=1
+			else
+				statusJogo=0
+
+			mapa[data] = jogos
+		}
+		
+		Usuario usuario =Usuario.findByUsername(springSecurityService?.principal?.username)
+		
+		def lista = Palpite.createCriteria().list{
+			createAlias("usuario","u")
+			eq("u.id", usuario.id )
 		}
 
-		render(view:'index.gsp', model:[datasEJogos:mapa])
+		render(view:'index.gsp', model:[datasEJogos:mapa, jogoFinalizado:statusJogo, listaPalpites: lista])
 	}
-
 
 	def jogoAtual() {
 		def dataAtual = new Date().format("yyyy-MM-dd")
 		def jogosDeHoje = Jogo.createCriteria().list{ sqlRestriction"date_format(data, '%Y-%m-%d') = '${dataAtual}'" }
-		render(view:'/index', model:[jogos:jogosDeHoje])
+
+		def lista = Pessoa.list(sort: 'pontos', order: 'desc')
+
+		render(view:'/index', model:[jogos:jogosDeHoje, jogadores:lista])
 	}
 
 	def salvarPalpite() {
@@ -45,7 +69,7 @@ class JogoController {
 				palpite = Palpite?.get(it?.id)
 			}
 		}
-		
+
 		palpite.dataPalpite	= new Date()
 		int golsTime01 = params?.golsTime1
 		int golsTime02 = params?.golsTime2

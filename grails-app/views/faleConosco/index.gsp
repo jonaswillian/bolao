@@ -65,13 +65,17 @@
 			</p>
 				
 			<p style="margin-top:35px;">Voc&ecirc; pode tamb&eacute;m enviar sua mensagem pelo formul&aacute;rio, preenchendo os campos abaixo.</p>
-               <form method="post" action="">
-                   <strong>Seu nome:</strong><br /><input type="text" name="nome" class="campo1" style="width:700px; height:30px;" /><br /><br />
-                   <strong>Seu e-mail:</strong><br /><input type="text" name="email" class="campo1" style="width:700px; height:30px;" /><br /><br />
-                   <strong>Sua mensagem:</strong><br /><textarea name="msg" class="campo1" style="width:700px; height:100px;"></textarea><br /><br />
-				<input type="submit" value="Enviar" name="Enviar" class="bot" />
-           	</form>		
-			
+             <g:formRemote name="frmFaleConosco" url="[controller:'faleConosco', action:'enviar']" update="msg" >
+	          <strong>Seu nome:</strong><br /><input type="text" name="txtNome" class="campo1" style="width:700px; height:30px;" required /><br /><br />
+              <strong>Seu email:</strong><br /><input type="text" name="txtEmail" class="campo1" style="width:700px; height:30px;" required /><br /><br />
+		      <strong>Sua mensagem:</strong><br /><textarea name="txtMensagem" class="campo1" style="width:700px; height:100px;" required></textarea> <br /><br />
+		      
+		
+		   <input type="submit" value="Enviar" name="Cadastrar" class="bot" />
+		   <div id="msg"> </div>
+	     </g:formRemote>
+	     <br/>
+            
 		</div>
 			
 		<div class="clear"></div>
